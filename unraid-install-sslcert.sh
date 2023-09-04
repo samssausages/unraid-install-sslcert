@@ -57,6 +57,8 @@ done
 
 # Restart the Nginx web server to apply the changes
 echo "Restarting Nginx web server to apply SSL certificate changes..."
-/etc/rc.d/rc.nginx restart
+/etc/rc.d/rc.nginx stop &
+sleep 10
+/etc/rc.d/rc.nginx start &
 
 echo "SSL certificates successfully reloaded"
