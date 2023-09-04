@@ -14,7 +14,7 @@ SSH_USER="rsync"
 REMOTE_DIR="/conf/acme"
 # Array of local directories to save files to
 LOCAL_DIRS=(
-  "/mnt/workpool/admin/certs"
+  "/mnt/certs"
   # Add more directories here as needed
 )
 
