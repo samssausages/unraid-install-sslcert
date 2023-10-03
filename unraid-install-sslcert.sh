@@ -8,8 +8,8 @@
 source_dir="/mnt/certs"
 
 # Define the source certificate file names (I use pfsense with the ACME package, it follows this naming pattern) 
-src_cert="subdomain.topleveldomain.com.all.pem"
-src_key="subdomain.topleveldomain.com.key"
+src_cert="subdomain.domain.com.all.pem"
+src_key="subdomain.domain.com.key"
 
 # Define target directories with respective filenames.  Unraid prefixes certs with your server name, i.e. 'tower_unraid_bundel.pem'. Make sure to replace "tower" with your servername.
 # Browse to 'yourserver.com/Settings/ManagementAccess', after configuring "Local TLD:" with your domain name, look for the name of "Self-signed or user-provided certificate:".
