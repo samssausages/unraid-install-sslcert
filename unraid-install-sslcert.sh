@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#v0.1
+#v0.2
 ######################unraid-install-sslcert######################
 ###################### User Defined Options ######################
 
@@ -11,16 +11,17 @@ source_dir="/mnt/certs"
 src_cert="subdomain.domain.com.all.pem"
 src_key="subdomain.domain.com.key"
 
-# Define target directories with respective filenames.  Unraid prefixes certs with your server name, i.e. 'tower_unraid_bundel.pem'. Make sure to replace "tower" with your servername.
-# Browse to 'yourserver.com/Settings/ManagementAccess', after configuring "Local TLD:" with your domain name, look for the name of "Self-signed or user-provided certificate:".
-# Then make sure to make the name here match.
-targets=(
-  "/boot/config/ssl/certs/tower_unraid_bundle.pem"
-  "/boot/config/ssl/certs/tower_unraid_key.pem"
-)
+# Define the hostname for the target files
+hostname="tower"  # Replace "tower" with your server name
 
 ###### Don't change below unless you know what you're doing ######
 ##################################################################
+
+# Unraid certificate file names & locations
+targets=(
+  "/boot/config/ssl/certs/${hostname}_unraid_bundle.pem"
+  "/boot/config/ssl/certs/${hostname}_unraid_key.pem"
+)
 
 # Check if the source directory exists
 if [ ! -d "$source_dir" ]; then
