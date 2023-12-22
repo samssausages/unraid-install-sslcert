@@ -11,17 +11,16 @@ source_dir="/mnt/certs"
 src_cert="subdomain.domain.com.all.pem"
 src_key="subdomain.domain.com.key"
 
-# Define the hostname for the target files
-hostname="tower"  # Replace "tower" with your server name
+# Unraid certificate file names & locations.  Replace "tower" with your server hostname.
+targets=(
+  "/boot/config/ssl/certs/tower_unraid_bundle.pem"
+  "/boot/config/ssl/certs/tower_unraid_key.pem"
+)
 
 ###### Don't change below unless you know what you're doing ######
 ##################################################################
 
-# Unraid certificate file names & locations
-targets=(
-  "/boot/config/ssl/certs/${hostname}_unraid_bundle.pem"
-  "/boot/config/ssl/certs/${hostname}_unraid_key.pem"
-)
+
 
 # Check if the source directory exists
 if [ ! -d "$source_dir" ]; then
