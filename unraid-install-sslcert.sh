@@ -25,13 +25,13 @@ targets=(
 
 # Check if the source directory exists
 if [ ! -d "$source_dir" ]; then
-  echo "Error: Source directory not found: $source_dir"
+  echo "Error: Source directory not found: $source_dir. Make sure you have the correct path set in the script."
   exit 1
 fi
 
 # Check if the source certificate files exist
 if [ ! -f "$source_dir/$src_cert" ] || [ ! -f "$source_dir/$src_key" ]; then
-  echo "Error: Source certificate files not found"
+  echo "Error: Source certificate files not found. Make sure you have the correct file names set in the script."
   exit 1
 fi
 
@@ -42,7 +42,7 @@ for ((i=0; i<${#targets[@]}; i+=2)); do
   tgt_key=$(basename "${targets[$i+1]}")
 
   if [ ! -d "$target_dir" ]; then
-    echo "Error: Target directory not found: $target_dir"
+    echo "Error: Target directory not found: $target_dir, contact the developer."
     continue
   fi
 
