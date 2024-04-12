@@ -5,7 +5,7 @@
 ###################### User Defined Options ######################
 
 # Define the source directory where the certificates are stored
-source_dir="/mnt/certs"
+source_dir="/mnt/user/certs"
 
 # Define the source certificate file names (I use pfsense with the ACME package, it follows this naming pattern) 
 src_cert="subdomain.domain.com.all.pem"
