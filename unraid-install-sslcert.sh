@@ -7,7 +7,8 @@
 # Define the source directory where the certificates are stored
 source_dir="/mnt/user/certs"
 
-# Define the source certificate file names (I use pfsense with the ACME package, it follows this naming pattern) 
+# Define the source certificate file names (I use pfsense with the pfsense ACME package, it follows this naming pattern) 
+# Nginx Proxy Manager uses fullchain.pem and privkey.key
 src_cert="subdomain.domain.com.all.pem"
 src_key="subdomain.domain.com.key"
 
