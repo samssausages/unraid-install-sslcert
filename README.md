@@ -16,3 +16,8 @@ v0.7
 - Increased usability with server_name variable, so user doesn't need to update the raw path.
 - added error check to cp operation
 - added error check to restart nginx operation
+
+
+todo: 
+- update targets to handle them them explicitly for better durability.
+- add dependency check for destination dir
