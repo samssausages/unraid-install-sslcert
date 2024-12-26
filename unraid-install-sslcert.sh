@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#v0.2
+#v0.7
 ######################unraid-install-sslcert######################
 ###################### User Defined Options ######################
 
@@ -12,16 +12,10 @@ source_dir="/mnt/user/certs"
 src_cert="subdomain.domain.com.all.pem"
 src_key="subdomain.domain.com.key"
 
-# Unraid certificate file names & locations.  Replace "tower" with your server hostname.
-targets=(
-  "/boot/config/ssl/certs/tower_unraid_bundle.pem"
-  "/boot/config/ssl/certs/tower_unraid_key.pem"
-)
+server_name="tower" # hostname of your server
 
 ###### Don't change below unless you know what you're doing ######
 ##################################################################
-
-
 
 # Check if the source directory exists
 if [ ! -d "$source_dir" ]; then
@@ -35,6 +29,12 @@ if [ ! -f "$source_dir/$src_cert" ] || [ ! -f "$source_dir/$src_key" ]; then
   exit 1
 fi
 
+# Generate certificate file names based on server hostname.
+targets=(
+  "/boot/config/ssl/certs/${server_name}_unraid_bundle.pem"
+  "/boot/config/ssl/certs/${server_name}_unraid_key.pem"
+)
+
 # Copy and rename the source certificate files to each target directory
 for ((i=0; i<${#targets[@]}; i+=2)); do
   target_dir=$(dirname "${targets[$i]}")
@@ -42,12 +42,12 @@ for ((i=0; i<${#targets[@]}; i+=2)); do
   tgt_key=$(basename "${targets[$i+1]}")
 
   if [ ! -d "$target_dir" ]; then
-    echo "Error: Target directory not found: $target_dir, contact the developer."
+    echo "Error: Target directory not found: $target_dir"
     continue
   fi
 
-  cp "$source_dir/$src_cert" "$target_dir/$tgt_cert"
-  cp "$source_dir/$src_key" "$target_dir/$tgt_key"
+  cp "$source_dir/$src_cert" "$target_dir/$tgt_cert" || { echo "Failed to copy certificate file"; exit 1; }
+  cp "$source_dir/$src_key" "$target_dir/$tgt_key" || { echo "Failed to copy key file"; exit 1; }
 
   # Set appropriate permissions for the certificate files
   chmod 600 "$target_dir/$tgt_cert"
@@ -58,8 +58,8 @@ done
 
 # Restart the Nginx web server to apply the changes
 echo "Restarting Nginx web server to apply SSL certificate changes..."
-/etc/rc.d/rc.nginx stop &
-sleep 10
-/etc/rc.d/rc.nginx start &
+/etc/rc.d/rc.nginx stop || { echo "Failed to stop Nginx"; exit 1; }
+sleep 5
+/etc/rc.d/rc.nginx start || { echo "Failed to start Nginx"; exit 1; }
 
 echo "SSL certificates successfully reloaded"
