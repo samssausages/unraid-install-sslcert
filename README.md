@@ -4,10 +4,7 @@ This script helps you install and update custom SSL Certificates on Unraid.
 
 It is setup to work with pfsense and ACME certificates
 
-One script retrieves the certs to your local server from pfsense, using SSH and the ACME plugin.
-The other script copies them over and restarts the webserver.
- 
-The newest version combines the script into one.  If you don't need the SSH function from pfsense, use the old script.
+The newest version combines the retrival script and the install script into one.  If you already have the files and don't need to copy from another host, then use the old script and set the file location.
 
 # Install
 - Use User-Scripts and set a cron schedule, ideally for 60 days.  Set your letsencrypt renewal to 59 days.
