@@ -6,13 +6,19 @@ log() {
   echo "$(date '+%Y-%m-%d %H:%M:%S') - $*"
 }
 
+######################unraid-install-sslcert######################
+###################### User Defined Options ######################
+
 # User defined
 hostname="tower"
 ssh_host="pfsense"
 
-# Remote source files on pfsense
+# Remote source files on pfsense, ACME default.  You can change if you're using another host.
 remote_cert="/conf/acme/${hostname}.yourdomain.com.all.pem"
 remote_key="/conf/acme/${hostname}.yourdomain.com.key"
+
+###### Don't change below unless you know what you're doing ######
+##################################################################
 
 # Local destination files
 dest_cert="/boot/config/ssl/certs/${hostname}_unraid_bundle.pem"
