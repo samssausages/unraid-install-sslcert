@@ -8,7 +8,8 @@ The newest version combines the retrival script and the install script into one.
 
 # Install
 - Use User-Scripts and set a cron schedule, ideally for 60 days.  Set your letsencrypt renewal to 59 days.
-- Enable SSH on Unraid:
+
+## Enable SSH on Unraid:
 
    1.  Generate SSH key
 
@@ -36,7 +37,8 @@ Host pfsense
     Identityfile ~/.ssh/pfsense
 ```
 
-- Enable SSH on pfsense:
+## Enable SSH on pfsense:
+
     1.  Create new user named "user" in pfsense
     2.  Add Effective Privileges "admins"
     3.  Add your SSH Key to the "Authorized Keys" section
