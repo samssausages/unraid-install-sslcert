@@ -11,10 +11,6 @@ The newest version combines the script into one.  If you don't need the SSH func
 
 # Install
 - Use User-Scripts and set a cron schedule, ideally for 60 days.  Set your letsencrypt renewal to 59 days.
-- Enable SSH on pfsense:
-    1.  Create new user named "user" in pfsense
-    2.  Add Effective Privileges "admins"
-    3.  Add your SSH Key to the "Authorized Keys" section
  - Enable SSH on Unraid:
     1.  Generate SSH key
 ```
@@ -38,7 +34,12 @@ Host pfsense
     user user
     Identityfile ~/.ssh/pfsense
 ```
-  3. Test on unraid with:
+- Enable SSH on pfsense:
+    1.  Create new user named "user" in pfsense
+    2.  Add Effective Privileges "admins"
+    3.  Add your SSH Key to the "Authorized Keys" section
+
+- Test on unraid with:
 ```
 ssh pfsense
 ```
