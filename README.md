@@ -10,7 +10,7 @@ The newest version combines the retrival script and the install script into one.
 - Use User-Scripts and set a cron schedule, ideally for 60 days.  Set your letsencrypt renewal to 59 days.
 - Enable SSH on Unraid:
 
-    1.  Generate SSH key
+   1.  Generate SSH key
 
 ```
 ssh-keygen -t ed25519 -a 100 -f /boot/config/ssh/pfsense
