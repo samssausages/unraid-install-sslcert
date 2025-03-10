@@ -43,7 +43,7 @@ Host pfsense
     2.  Add Effective Privileges "admins"
     3.  Add your SSH Key to the "Authorized Keys" section
 
-- Test on unraid with:
+- Test SSH connection from unraid with:
 
 ```
 ssh pfsense
